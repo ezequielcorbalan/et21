@@ -1,0 +1,61 @@
+---
+interface PreviewPost { href: string; image: string; category: string; title: string; excerpt: string; meta: string; }
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  description: string;
+  posts: PreviewPost[];
+  seeAllHref: string;
+  seeAllLabel: string;
+}
+
+const { kicker, titleLine1, titleLine2Italic, description, posts, seeAllHref, seeAllLabel } = Astro.props;
+---
+
+<section class="py-20 px-8">
+  <div class="container-et">
+    <!-- Section header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[36px] md:text-[42px]">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+      </div>
+      <p class="text-body text-[15px] leading-relaxed md:max-w-sm">{description}</p>
+    </div>
+
+    <!-- Blog grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      {posts.map((post) => (
+        <a
+          href={post.href}
+          class="group flex flex-col bg-white border border-line rounded-2xl overflow-hidden shadow-card-hover hover:shadow-card-lift transition-all hover:-translate-y-1"
+        >
+          <!-- Image -->
+          <div class="aspect-[16/9] overflow-hidden">
+            <img
+              src={post.image}
+              alt={post.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <!-- Body -->
+          <div class="flex flex-col flex-1 p-6 gap-3">
+            <div class="text-[11px] font-bold uppercase tracking-widest text-gold">{post.category}</div>
+            <h3 class="text-[16px] font-bold text-ink leading-snug">{post.title}</h3>
+            <p class="text-body text-[14px] leading-relaxed flex-1">{post.excerpt}</p>
+            <div class="text-[12px] text-muted pt-3 border-t border-line">{post.meta}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- See all -->
+    <div class="flex justify-center mt-12">
+      <a class="btn-ghost" href={seeAllHref}>{seeAllLabel} <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>

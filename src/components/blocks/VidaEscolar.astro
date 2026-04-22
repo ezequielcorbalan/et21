@@ -1,0 +1,53 @@
+---
+interface Project { href: string; image: string; alt: string; label: string; title: string; large?: boolean; }
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  description: string;
+  projects: Project[];
+}
+
+const { kicker, titleLine1, titleLine2Italic, description, projects } = Astro.props;
+---
+
+<section class="py-20 px-8 bg-cream">
+  <div class="container-et">
+    <!-- Section header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[36px] md:text-[42px]">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+      </div>
+      <p class="text-body text-[15px] leading-relaxed md:max-w-sm">{description}</p>
+    </div>
+
+    <!-- Projects grid: first item spans 2 cols if large -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {projects.map((p, i) => (
+        <a
+          href={p.href}
+          class={[
+            'group relative block overflow-hidden rounded-2xl shadow-card-hover hover:shadow-card-lift transition-shadow',
+            p.large ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/3]',
+          ].join(' ')}
+        >
+          <img
+            src={p.image}
+            alt={p.alt}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <!-- Gradient -->
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,37,69,0.72) 0%, transparent 55%);"></div>
+          <!-- Info -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <div class="text-[11px] font-bold uppercase tracking-widest text-gold-bright mb-1">{p.label}</div>
+            <h4 class="text-[17px] font-bold leading-snug">{p.title}</h4>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

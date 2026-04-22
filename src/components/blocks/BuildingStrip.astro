@@ -1,0 +1,31 @@
+---
+interface Tile { href: string; image: string; alt: string; chip: string; caption: string; }
+interface Props { tiles: Tile[]; }
+
+const { tiles } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 px-4 md:px-8 max-w-content mx-auto pb-3">
+  {tiles.map((tile) => (
+    <a
+      href={tile.href}
+      class="relative block overflow-hidden rounded-2xl group aspect-[16/7] shadow-card-hover hover:shadow-card-lift transition-shadow"
+    >
+      <img
+        src={tile.image}
+        alt={tile.alt}
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,37,69,0.75) 0%, transparent 55%);"></div>
+      <!-- Caption -->
+      <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+        <span class="inline-block bg-gold-bright text-navy text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2">
+          {tile.chip}
+        </span>
+        <br />
+        <span class="text-[14px] leading-snug text-white/90">{tile.caption}</span>
+      </div>
+    </a>
+  ))}
+</div>

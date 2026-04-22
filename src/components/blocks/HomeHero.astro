@@ -1,0 +1,76 @@
+---
+interface Badge { label: string; value: string; }
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  lede: string;
+  primaryCtaHref: string;
+  primaryCtaLabel: string;
+  secondaryCtaHref: string;
+  secondaryCtaLabel: string;
+  heroImage: string;
+  heroAlt: string;
+  badges: Badge[];
+  metaLocation: string;
+  metaAuthority: string;
+}
+
+const {
+  kicker,
+  titleLine1,
+  titleLine2Italic,
+  lede,
+  primaryCtaHref,
+  primaryCtaLabel,
+  secondaryCtaHref,
+  secondaryCtaLabel,
+  heroImage,
+  heroAlt,
+  badges,
+  metaLocation,
+  metaAuthority,
+} = Astro.props;
+---
+
+<section class="container-et mx-auto px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+  <!-- Copy column -->
+  <div>
+    <div class="kicker">{kicker}</div>
+    <h1 class="h-display text-[52px] md:text-[60px] mb-6">
+      {titleLine1}<br />
+      <span class="italic-serif">{titleLine2Italic}</span>
+    </h1>
+    <p class="text-body text-[17px] leading-relaxed mb-0" set:html={lede} />
+
+    <div class="flex flex-wrap gap-4 mt-7">
+      <a class="btn-primary" href={primaryCtaHref}>
+        {primaryCtaLabel} <span class="arrow">→</span>
+      </a>
+      <a class="btn-ghost" href={secondaryCtaHref}>{secondaryCtaLabel}</a>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3 mt-6 text-[14px] text-muted">
+      <div>📍 <strong class="text-ink">{metaLocation}</strong></div>
+      <div class="text-line">·</div>
+      <div>🏛 <strong class="text-ink">{metaAuthority}</strong></div>
+    </div>
+  </div>
+
+  <!-- Visual column -->
+  <div class="relative">
+    <div class="rounded-2xl overflow-hidden shadow-hero aspect-[4/3]">
+      <img src={heroImage} alt={heroAlt} class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Badge strip -->
+    <div class="absolute -bottom-5 left-4 right-4 bg-white rounded-xl shadow-card-hover flex divide-x divide-line overflow-hidden">
+      {badges.map((b) => (
+        <div class="flex-1 px-4 py-3 text-center">
+          <h4 class="text-[11px] font-bold uppercase tracking-widest text-muted mb-0.5">{b.label}</h4>
+          <p class="text-[13px] font-semibold text-ink leading-tight">{b.value}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

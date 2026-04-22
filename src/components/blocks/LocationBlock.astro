@@ -1,0 +1,81 @@
+---
+interface Props {
+  id?: string;
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  address: string;
+  description: string;
+  tel: string;
+  mail: string;
+  hours: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  backgroundImage?: string;
+}
+
+const {
+  id,
+  kicker,
+  titleLine1,
+  titleLine2Italic,
+  address,
+  description,
+  tel,
+  mail,
+  hours,
+  ctaHref,
+  ctaLabel,
+  backgroundImage = '/images/edificio-esquina.jpg',
+} = Astro.props;
+---
+
+<section id={id} class="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
+  <!-- Info panel -->
+  <div class="bg-navy py-20 px-10 lg:px-16 flex flex-col justify-center">
+    <div class="kicker kicker-light">{kicker}</div>
+    <h2 class="h-display text-[36px] md:text-[42px] text-white mb-4">
+      {titleLine1} <span class="italic-serif text-gold-bright">{titleLine2Italic}</span>
+    </h2>
+    <div class="text-gold-bright text-[14px] font-semibold mb-4">{address}</div>
+    <p class="text-white/70 text-[15px] leading-relaxed mb-8">{description}</p>
+
+    <ul class="flex flex-col gap-3 mb-8">
+      <li class="flex items-center gap-3 text-[14px] text-white/80">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-gold-bright w-10 shrink-0">TEL</span>
+        <span>{tel}</span>
+      </li>
+      <li class="flex items-center gap-3 text-[14px] text-white/80">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-gold-bright w-10 shrink-0">MAIL</span>
+        <a href={`mailto:${mail}`} class="hover:text-white transition-colors">{mail}</a>
+      </li>
+      <li class="flex items-start gap-3 text-[14px] text-white/80">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-gold-bright w-10 shrink-0 mt-0.5">HRS</span>
+        <span>{hours}</span>
+      </li>
+    </ul>
+
+    {ctaHref && ctaLabel && (
+      <div>
+        <a class="btn-primary" href={ctaHref}>
+          {ctaLabel} <span class="arrow">→</span>
+        </a>
+      </div>
+    )}
+  </div>
+
+  <!-- Map / image panel -->
+  <div class="relative min-h-[320px] lg:min-h-0 overflow-hidden">
+    <img
+      src={backgroundImage}
+      alt="Edificio ET Nº 21 · Núñez 3638"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Pin overlay -->
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="bg-navy/80 backdrop-blur-sm text-white text-[15px] font-semibold px-5 py-3 rounded-full shadow-hero">
+        📍 Núñez 3638
+      </div>
+    </div>
+  </div>
+</section>

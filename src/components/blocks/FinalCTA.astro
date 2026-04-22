@@ -1,0 +1,51 @@
+---
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  copy: string;
+  actionsTitle: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+}
+
+const {
+  kicker,
+  titleLine1,
+  titleLine2Italic,
+  copy,
+  actionsTitle,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section class="bg-navy py-20 px-8">
+  <div class="container-et">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Left copy -->
+      <div>
+        <div class="kicker kicker-light">{kicker}</div>
+        <h2 class="h-display text-[36px] md:text-[46px] text-white mb-5">
+          {titleLine1} <span class="italic-serif text-gold-bright">{titleLine2Italic}</span>
+        </h2>
+        <p class="text-white/70 text-[16px] leading-relaxed">{copy}</p>
+      </div>
+
+      <!-- Right actions -->
+      <div class="flex flex-col gap-4">
+        <h4 class="text-[14px] font-bold uppercase tracking-widest text-gold-bright">{actionsTitle}</h4>
+        <a class="btn-white" href={primaryHref}>
+          {primaryLabel} <span class="arrow">→</span>
+        </a>
+        <a class="btn-outline" href={secondaryHref}>
+          {secondaryLabel} <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
