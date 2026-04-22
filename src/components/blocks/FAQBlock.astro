@@ -39,7 +39,7 @@ const schemaData = {
 ---
 
 {withSchema && (
-  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 )}
 
 <section id={id} class="py-20 px-8 bg-cream">

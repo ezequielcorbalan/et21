@@ -4,7 +4,7 @@
 
 <form
   class="flex flex-col gap-5"
-  onsubmit="event.preventDefault(); alert('Mockup: el formulario no está conectado a un backend. En producción esta consulta llegaría a secretaría.');"
+  onsubmit="event?.preventDefault(); alert('Mockup: el formulario no está conectado a un backend. En producción esta consulta llegaría a secretaría.'); return false;"
 >
   <!-- Nombre -->
   <div class="flex flex-col gap-1.5">

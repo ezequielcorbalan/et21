@@ -26,7 +26,7 @@ const { kicker, titleLine1, titleLine2Italic, description, projects } = Astro.pr
 
     <!-- Projects grid: first item spans 2 cols if large -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {projects.map((p, i) => (
+      {projects.map((p) => (
         <a
           href={p.href}
           class={[
