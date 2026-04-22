@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Button from '../../components/ui/Button.astro';
+import Section from '../../components/ui/Section.astro';
+import StatsRow from '../../components/blocks/StatsRow.astro';
+import CarrerasGrid from '../../components/blocks/CarrerasGrid.astro';
+import RequirementsCards from '../../components/blocks/RequirementsCards.astro';
+import FinalCTA from '../../components/blocks/FinalCTA.astro';
+
+const stats = [
+  { num: '3',      label: 'Años de cursada (en vez de 6 del diurno)' },
+  { num: '18–23',  label: 'Horario de clases, lunes a viernes' },
+  { num: 'Gratis', label: 'Escuela pública, sin cuota, título oficial' },
+];
+
+const carreras = [
+  {
+    href: '/carreras/maestro-mayor-de-obras',
+    image: '/images/patio-naranja.jpg',
+    imageAlt: 'MMO Nocturno',
+    tag: '3 años · nocturno',
+    title: 'Maestro Mayor de Obras',
+    meta: 'Construcción · Estructuras · Instalaciones',
+    bullets: [
+      'Plan adaptado para adultos trabajadores',
+      'Título con firma habilitante',
+      'Salida laboral inmediata en obra',
+    ],
+    length: '3 años · 18–23 hs',
+    linkLabel: 'Ver carrera →',
+  },
+  {
+    href: '/carreras/tecnico-en-computacion',
+    image: '/images/patio-palmeras.jpg',
+    imageAlt: 'Computación Nocturno',
+    tag: '3 años · nocturno',
+    title: 'Técnico en Computación',
+    meta: 'Programación · Redes · Desarrollo',
+    bullets: [
+      'Plan acelerado con foco en práctica',
+      'Laboratorios equipados disponibles de noche',
+      'Salida laboral en dev, redes y soporte',
+    ],
+    length: '3 años · 18–23 hs',
+    linkLabel: 'Ver carrera →',
+  },
+];
+
+const reqCards = [
+  {
+    variant: 'green' as const,
+    tag: 'Edad y estudios previos',
+    title: 'Quién puede cursar',
+    items: [
+      'Tener 16 años cumplidos al inicio del ciclo lectivo (o cumplirlos con autorización)',
+      'Haber terminado 7° grado como mínimo',
+      'Si venís de otra secundaria, traer analítico con materias aprobadas',
+      'Sin tope máximo de edad',
+    ],
+  },
+  {
+    variant: 'gold' as const,
+    tag: 'Documentación',
+    title: 'Qué traer',
+    items: [
+      'DNI original y copia',
+      'Partida de nacimiento',
+      'Analítico o constancia de estudios previos',
+      'Comprobante de domicilio',
+      '2 fotos 4x4',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Nocturno adultos — Terminá tu secundario técnico | ET21 CABA"
+  description="Turno nocturno para adultos +16 en la Escuela Técnica Nº 21. MMO o Técnico en Computación en 3 años, título oficial, escuela pública y gratuita en Núñez 3638, CABA."
+>
+  <!-- 1. Hero -->
+  <PageHero
+    breadcrumbs={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Nocturno adultos' },
+    ]}
+    kicker="Turno nocturno · Adultos +16"
+    title="Terminá tu secundario"
+    italicTitle="técnico."
+    lede="Tres años de cursada nocturna, título oficial habilitante, y la posibilidad real de entrar al mercado laboral con un oficio. Sin tope de edad."
+  >
+    <Button href="/inscripcion-2026" variant="gold" arrow>Inscripción Nocturno 2026</Button>
+    <Button href="/contacto" variant="outline">Escribinos</Button>
+  </PageHero>
+
+  <!-- 2. Stats -->
+  <Section>
+    <StatsRow stats={stats} />
+  </Section>
+
+  <!-- 3. Carreras grid -->
+  <CarrerasGrid
+    kicker="Dos especialidades"
+    titleLine1="Elegí tu"
+    titleLine2Italic="carrera."
+    description="Ambas con título oficial habilitante, plan condensado en 3 años para adultos."
+    carreras={carreras}
+  />
+
+  <!-- 4. Requirements -->
+  <section id="requisitos-nocturno" class="section-pad container-et">
+    <div class="mb-10">
+      <div class="kicker">Requisitos del nocturno</div>
+      <h2 class="h-display text-[36px] md:text-[42px]">
+        Lo que necesitás para <span class="italic-serif">anotarte.</span>
+      </h2>
+    </div>
+    <RequirementsCards cards={reqCards} />
+  </section>
+
+  <!-- 5. Final CTA -->
+  <FinalCTA
+    kicker="Anotate para 2026"
+    titleLine1="Todavía"
+    titleLine2Italic="estás a tiempo."
+    copy="Desde el 15 de noviembre abrimos inscripción del nocturno. Escuela pública, título oficial y una comunidad que aprende con vos."
+    actionsTitle="Próximos pasos"
+    primaryHref="/inscripcion-2026"
+    primaryLabel="Ver cronograma completo"
+    secondaryHref="/contacto"
+    secondaryLabel="Contactar secretaría"
+  />
+</Layout>

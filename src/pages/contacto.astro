@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Kicker from '../components/ui/Kicker.astro';
+import ContactForm from '../components/blocks/ContactForm.astro';
+import GoogleMap from '../components/blocks/GoogleMap.astro';
+import SchemaLocalBusiness from '../components/seo/SchemaLocalBusiness.astro';
+---
+
+<Layout
+  title="Contacto — Escuela Técnica Nº 21 Fragata Libertad | Núñez 3638, CABA"
+  description="Contactá la secretaría de la ET Nº 21 en Núñez 3638, CABA. Formulario, teléfono (011) 4543-7363, email info@et21.com.ar, ubicación en mapa y líneas de colectivo."
+>
+  <Fragment slot="schema"><SchemaLocalBusiness /></Fragment>
+
+  <PageHero
+    breadcrumbs={[{ label: 'Inicio', href: '/' }, { label: 'Contacto' }]}
+    kicker="Contacto"
+    title="Escribinos"
+    italicTitle="o visitanos."
+    lede="Secretaría, inscripción, turnos y consultas generales. Te respondemos en 48 hs hábiles por mail, o atendemos en horario escolar."
+  />
+
+  <!-- Formulario de contacto -->
+  <section id="formulario" class="container-et section-pad grid grid-cols-2 gap-14 max-md:grid-cols-1">
+
+    <!-- Columna izquierda: intro + mapa + datos de contacto -->
+    <div>
+      <Kicker>Formulario</Kicker>
+      <h2 class="h-display mt-3 mb-4">
+        Contanos en qué <span class="italic-serif text-gold">podemos ayudarte.</span>
+      </h2>
+      <p class="text-body text-[15px] leading-relaxed">
+        Completá el formulario y la secretaría te va a responder en 48 hs hábiles. Si es algo urgente, llamanos directamente al (011) 4543-7363.
+      </p>
+
+      <div class="mt-8 pt-6 border-t border-line">
+        <!-- Mapa -->
+        <div class="mb-5">
+          <GoogleMap address="Núñez 3638, CABA, Argentina" label="Núñez 3638" />
+        </div>
+
+        <!-- Lista de datos de contacto -->
+        <ul class="list-none m-0 p-0">
+          <li class="py-2.5 text-[14px] text-ink border-b border-line/60 last:border-b-0">
+            <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] mr-2.5">TEL</span>(011) 4543-7363
+          </li>
+          <li class="py-2.5 text-[14px] text-ink border-b border-line/60 last:border-b-0">
+            <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] mr-2.5">MAIL</span>info@et21.com.ar
+          </li>
+          <li class="py-2.5 text-[14px] text-ink border-b border-line/60 last:border-b-0">
+            <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] mr-2.5">HRS</span>Lun–Vie · 8:00 a 23:00 hs
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Columna derecha: formulario -->
+    <ContactForm />
+  </section>
+
+  <!-- Cómo llegar -->
+  <section id="como-llegar" class="container-et section-pad grid grid-cols-[1fr_1.3fr] gap-10 max-md:grid-cols-1">
+
+    <!-- Columna izquierda: info de ubicación -->
+    <div class="location-info">
+      <Kicker>Cómo llegar</Kicker>
+      <h2 class="h-display mt-3 mb-4">
+        Núñez 3638 <span class="italic-serif">· CABA</span>
+      </h2>
+      <p class="text-[13px] font-semibold text-muted uppercase tracking-wider mb-1">Núñez 3638, Ciudad Autónoma de Buenos Aires</p>
+      <p class="text-body text-[15px] leading-relaxed mt-3 mb-6">
+        Nuevo edificio desde 2019. Entrada principal por Núñez.
+      </p>
+
+      <ul class="list-none m-0 p-0 flex flex-col gap-3">
+        <li class="flex items-start gap-3 text-[14px] text-ink">
+          <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] shrink-0 mt-0.5">SUB</span>
+          Línea D · estación Congreso de Tucumán
+        </li>
+        <li class="flex items-start gap-3 text-[14px] text-ink">
+          <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] shrink-0 mt-0.5">BUS</span>
+          29, 42, 60, 114, 130, 184
+        </li>
+        <li class="flex items-start gap-3 text-[14px] text-ink">
+          <span class="inline-block bg-cream text-navy text-[10px] font-extrabold px-2 py-0.5 rounded tracking-[0.8px] shrink-0 mt-0.5">ESTAC</span>
+          Zona azul y estacionamientos privados sobre Cabildo
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna derecha: mapa ampliado -->
+    <GoogleMap address="Núñez 3638, CABA, Argentina" label="Núñez 3638" height={440} />
+  </section>
+
+</Layout>

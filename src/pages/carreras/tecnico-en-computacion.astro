@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Button from '../../components/ui/Button.astro';
+import SplitInfo from '../../components/blocks/SplitInfo.astro';
+import PlanDeEstudios from '../../components/blocks/PlanDeEstudios.astro';
+import SalidaLaboral from '../../components/blocks/SalidaLaboral.astro';
+import FinalCTA from '../../components/blocks/FinalCTA.astro';
+
+const planYears = [
+  {
+    year: '1°',
+    label: 'Ciclo básico',
+    subjects: ['Matemática I', 'Lengua', 'Tecnología de la información', 'Taller informático'],
+  },
+  {
+    year: '2°',
+    label: 'Ciclo básico',
+    subjects: ['Matemática II', 'Física', 'Lógica y algoritmia', 'Programación introductoria'],
+  },
+  {
+    year: '3°',
+    label: 'Ciclo básico',
+    subjects: ['Electrónica básica', 'Programación I', 'Sistemas operativos', 'Taller de hardware'],
+  },
+  {
+    year: '4°',
+    label: 'Superior',
+    subjects: ['Programación II', 'Bases de datos', 'Redes I', 'Práctica profesionalizante'],
+  },
+  {
+    year: '5°',
+    label: 'Superior',
+    subjects: ['Desarrollo web', 'Redes II', 'Robótica', 'Gestión de proyectos'],
+  },
+  {
+    year: '6°',
+    label: 'Superior',
+    subjects: ['Proyecto final', 'Arquitectura de software', 'Seguridad', 'Práctica profesional'],
+  },
+];
+
+const salidaStats = [
+  { num: 'Dev', description: 'Desarrollador/a junior, fullstack o especializado' },
+  { num: 'SysAdmin', description: 'Administración de redes, servidores y sistemas' },
+  { num: 'Robótica', description: 'Automatización industrial y proyectos embebidos' },
+];
+---
+
+<Layout
+  title="Técnico en Computación — ET Nº 21 Fragata Libertad"
+  description="Carrera de Técnico en Computación de 6 años con título oficial. Programación, redes, bases de datos y robótica. Laboratorios modernos en Núñez 3638, CABA."
+>
+  <PageHero
+    breadcrumbs={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Carreras', href: '/carreras/tecnico-en-computacion' },
+      { label: 'Técnico en Computación' },
+    ]}
+    kicker="Carrera técnica · 6 años"
+    title="Técnico en"
+    italicTitle="Computación."
+    lede="Programación, redes, bases de datos y robótica. Plan oficial de 6 años con laboratorios equipados en el nuevo edificio. Título oficial habilitante."
+  >
+    <Button href="/inscripcion-2026" variant="gold" arrow>Inscripción 2026</Button>
+    <Button href="/contacto" variant="outline">Solicitar charla informativa</Button>
+  </PageHero>
+
+  <SplitInfo
+    kicker="Qué vas a aprender"
+    titleLine1="Tecnología"
+    titleLine2Italic="de verdad."
+    paragraphs={[
+      'El Técnico en Computación está habilitado para desarrollar software, administrar redes y sistemas, y trabajar en proyectos de automatización y robótica. No es un bootcamp: es una <strong>formación técnica completa de 6 años</strong> con plan oficial.',
+      'En el nuevo edificio tenemos laboratorios de informática con hardware actualizado, kits de robótica y acceso a servidores de práctica para redes.',
+    ]}
+    boxTitle="Áreas de formación"
+    boxItems={[
+      'Programación (Python, JavaScript, C)',
+      'Bases de datos relacionales y NoSQL',
+      'Redes LAN/WAN y administración de servidores',
+      'Desarrollo web frontend y backend',
+      'Robótica y electrónica digital',
+      'Mantenimiento de hardware y sistemas operativos',
+    ]}
+  />
+
+  <PlanDeEstudios
+    kicker="Plan de estudios"
+    titleLine1="Seis años de"
+    titleLine2Italic="formación técnica."
+    description="Del cero a proyectos propios. Ciclo básico (1°–3°) con bases, ciclo superior (4°–6°) con especialización."
+    years={planYears}
+  />
+
+  <SalidaLaboral
+    kicker="Salida laboral"
+    titleLine1="El mercado"
+    titleLine2Italic="te necesita."
+    stats={salidaStats}
+  />
+
+  <FinalCTA
+    kicker="Inscripción 2026"
+    titleLine1="Programá tu"
+    titleLine2Italic="futuro."
+    copy="La tecnología no espera. Formate con rigor técnico, título oficial y 6 años de trayectoria."
+    actionsTitle="Próximos pasos"
+    primaryHref="/inscripcion-2026"
+    primaryLabel="Inscribirme a 1° año"
+    secondaryHref="/carreras/nocturno-adultos"
+    secondaryLabel="Nocturno adultos"
+  />
+</Layout>

@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Button from '../../components/ui/Button.astro';
+import SplitInfo from '../../components/blocks/SplitInfo.astro';
+import PlanDeEstudios from '../../components/blocks/PlanDeEstudios.astro';
+import SalidaLaboral from '../../components/blocks/SalidaLaboral.astro';
+import FinalCTA from '../../components/blocks/FinalCTA.astro';
+
+const plan = [
+  { year: '1°', label: 'Ciclo básico', subjects: ['Matemática I', 'Lengua', 'Tecnología de la representación', 'Taller polivalente'] },
+  { year: '2°', label: 'Ciclo básico', subjects: ['Matemática II', 'Física', 'Dibujo técnico', 'Taller de construcción'] },
+  { year: '3°', label: 'Ciclo básico', subjects: ['Matemática III', 'Química', 'Tecnología de materiales', 'Taller de obra'] },
+  { year: '4°', label: 'Superior', subjects: ['Resistencia de materiales', 'Instalaciones sanitarias', 'Construcciones I', 'Práctica profesionalizante'] },
+  { year: '5°', label: 'Superior', subjects: ['Construcciones II', 'Hormigón armado', 'Instalaciones eléctricas', 'Costos y presupuestos'] },
+  { year: '6°', label: 'Superior', subjects: ['Proyecto final', 'Dirección de obra', 'Legislación', 'Práctica profesional'] },
+];
+
+const stats = [
+  { num: 'Estudios', description: 'de arquitectura e ingeniería como proyectistas, dibujantes y calculistas' },
+  { num: 'Obra', description: 'Como capataces, sobrestantes y directores de obras privadas y municipales' },
+  { num: 'Propia', description: 'Matriculados, proyectando y firmando planos de obras propias' },
+];
+---
+
+<Layout
+  title="Maestro Mayor de Obras en CABA — ET Nº 21 Fragata Libertad"
+  description="Carrera de Maestro Mayor de Obras de 6 años con título oficial habilitante. Dirigir obras, calcular estructuras, firmar planos municipales. Plan oficial del Ministerio de Educación CABA."
+>
+  <PageHero
+    breadcrumbs={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Carreras', href: '/carreras/maestro-mayor-de-obras' },
+      { label: 'Maestro Mayor de Obras' },
+    ]}
+    kicker="Carrera técnica · 6 años"
+    title="Maestro Mayor"
+    italicTitle="de Obras."
+    lede="Formate para dirigir obras, interpretar planos y calcular estructuras. Título oficial habilitante del Ministerio de Educación. Turnos mañana y tarde."
+  >
+    <Button href="/inscripcion-2026" variant="gold" arrow>Inscripción 2026</Button>
+    <Button href="/contacto" variant="outline">Solicitar charla informativa</Button>
+  </PageHero>
+
+  <SplitInfo
+    kicker="Qué vas a aprender"
+    titleLine1="Un oficio con"
+    titleLine2Italic="incumbencias reales."
+    paragraphs={[
+      'El Maestro Mayor de Obras es el profesional habilitado para <strong>dirigir, proyectar y ejecutar</strong> obras de arquitectura e ingeniería civil. En ET21 se forma con plan oficial de 6 años, con prácticas profesionalizantes desde 4° año.',
+      'Al recibirte, podés firmar planos municipales, dirigir obras en construcción y calcular estructuras hasta cuatro pisos con dependencia.',
+    ]}
+    boxTitle="Incumbencias profesionales"
+    boxItems={[
+      'Proyecto y dirección de edificios hasta 4 pisos',
+      'Cálculo de estructuras de hormigón y metálicas',
+      'Instalaciones térmicas, de gas, sanitarias y eléctricas',
+      'Firma de planos municipales',
+      'Relevamientos arquitectónicos y peritajes',
+    ]}
+  />
+
+  <PlanDeEstudios
+    kicker="Plan de estudios"
+    titleLine1="Seis años, dos"
+    titleLine2Italic="ciclos."
+    description="Ciclo básico de formación general (1°–3°) y ciclo superior con especialización técnica (4°–6°)."
+    years={plan}
+  />
+
+  <SalidaLaboral
+    kicker="Salida laboral"
+    titleLine1="Dónde trabajan"
+    titleLine2Italic="nuestros egresados."
+    stats={stats}
+  />
+
+  <FinalCTA
+    kicker="Inscripción 2026"
+    titleLine1="Empezá a"
+    titleLine2Italic="construir."
+    copy="Plan oficial, título habilitante y 74 años de tradición formando MMO. Tu lugar en la obra empieza acá."
+    actionsTitle="Próximos pasos"
+    primaryHref="/inscripcion-2026"
+    primaryLabel="Inscribirme a 1° año"
+    secondaryHref="/carreras/nocturno-adultos"
+    secondaryLabel="Nocturno adultos"
+  />
+</Layout>
