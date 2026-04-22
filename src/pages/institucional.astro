@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Heritage from '../components/blocks/Heritage.astro';
+import VidaEscolar from '../components/blocks/VidaEscolar.astro';
+import AuthorityGrid from '../components/blocks/AuthorityGrid.astro';
+import SplitInfo from '../components/blocks/SplitInfo.astro';
+import FinalCTA from '../components/blocks/FinalCTA.astro';
+---
+
+<Layout
+  title="Institucional — Escuela Técnica Nº 21 Fragata Libertad"
+  description="74 años formando técnicos. Historia, proyecto educativo y equipo directivo de la Escuela Técnica Nº 21 D.E. 10 Fragata Escuela Libertad en Núñez 3638, CABA."
+>
+
+  <PageHero
+    breadcrumbs={[{ label: 'Inicio', href: '/' }, { label: 'Institucional' }]}
+    kicker="Institucional"
+    title="Setenta y cuatro años"
+    italicTitle="formando técnicos."
+    lede='La Escuela Técnica Nº 21 D.E. 10 "Fragata Escuela Libertad" es una escuela pública del Ministerio de Educación de la Ciudad de Buenos Aires. Fundada en 1952, formamos Maestros Mayores de Obras y Técnicos en Computación con plan oficial.'
+  />
+
+  <Heritage
+    id="historia"
+    image="/images/fachada-historica.jpg"
+    imageAlt="Fachada original de 1952"
+    imageOverlay="Edificio original · 1952"
+    kicker="Nuestra historia"
+    titleLine1="Desde 1952, formando con"
+    titleLine2Italic="rigor y valores."
+    paragraphs={[
+      'La ET21 nació en octubre de 1952 como escuela industrial pública. A lo largo de siete décadas, pasaron por sus aulas generaciones de técnicos que hoy trabajan en estudios, obras, empresas de desarrollo y organismos públicos.',
+      'El nombre patronímico <strong>"Fragata Escuela Libertad"</strong> se asumió en homenaje al buque escuela de la Armada Argentina, simbolizando la idea de formar con disciplina, rigor y honor.',
+    ]}
+    facts={[
+      { label: 'Fundación',       value: 'Octubre de 1952' },
+      { label: 'Distrito Escolar', value: 'D.E. 10 · CABA' },
+      { label: 'Nuevo edificio',  value: '2019 · Núñez 3638' },
+      { label: 'Especialidades',  value: 'MMO · Técnico en Computación' },
+    ]}
+  />
+
+  <VidaEscolar
+    kicker="Edificio"
+    titleLine1="Desde 2019, en"
+    titleLine2Italic="Núñez 3638."
+    description="Nuestro nuevo edificio fue diseñado específicamente para escuela técnica: aulas, laboratorios, talleres y espacios comunes."
+    projects={[
+      {
+        href: '#',
+        image: '/images/patio-palmeras.jpg',
+        alt: 'Patio interior con palmeras',
+        label: 'Patio interior',
+        title: 'Palmeras, bancos y pasillo cubierto',
+        large: true,
+      },
+      {
+        href: '#',
+        image: '/images/fachada-calle.jpg',
+        alt: 'Fachada del edificio',
+        label: 'Fachada',
+        title: 'Entrada por Núñez 3638',
+      },
+      {
+        href: '#',
+        image: '/images/edificio-esquina.jpg',
+        alt: 'Vista de calle del edificio',
+        label: 'Vista de calle',
+        title: 'Cuatro pisos con laboratorios',
+      },
+    ]}
+  />
+
+  <AuthorityGrid
+    kicker="Equipo directivo"
+    titleLine1="Quiénes"
+    titleLine2Italic="conducen la escuela."
+    description='Equipo directivo, pedagógico y de secretaría. Para consultas específicas, ver <a href="/contacto" style="color:var(--gold);font-weight:700;">contacto</a>.'
+    items={[
+      { initial: 'D', name: 'Dirección',              role: 'Rectoría general' },
+      { initial: 'V', name: 'Vicedirección diurna',   role: 'Turno mañana y tarde' },
+      { initial: 'N', name: 'Vicedirección nocturna', role: 'Turno noche' },
+      { initial: 'C', name: 'Jefatura de carreras',   role: 'MMO y Computación' },
+      { initial: 'S', name: 'Secretaría',             role: 'Trámites y matrícula' },
+      { initial: 'T', name: 'Tutoría',                role: 'Acompañamiento al alumno' },
+    ]}
+  />
+
+  <SplitInfo
+    alt={true}
+    kicker="Proyecto educativo"
+    titleLine1="Formar técnicos con"
+    titleLine2Italic="criterio."
+    paragraphs={[
+      'Nuestro proyecto educativo se apoya en tres ejes: <strong>rigor técnico</strong> (saber hacer bien el oficio), <strong>pensamiento crítico</strong> (saber por qué se hace así) y <strong>valores éticos</strong> (saber para qué y para quién se hace).',
+      'No formamos operarios; formamos técnicos que entienden el sistema en el que trabajan y pueden tomar decisiones informadas.',
+    ]}
+    boxTitle="Perfil del egresado"
+    boxItems={[
+      'Competencias técnicas sólidas del oficio elegido',
+      'Capacidad de lectura de planos y documentación técnica',
+      'Trabajo en equipo y comunicación profesional',
+      'Actualización continua frente a nuevas tecnologías',
+      'Responsabilidad ética y social en el ejercicio del oficio',
+    ]}
+  />
+
+  <FinalCTA
+    kicker="Sumate"
+    titleLine1="La próxima generación de"
+    titleLine2Italic="la Fragata."
+    copy="74 años construyendo comunidad técnica. Si te interesa lo que hacemos, hay dos formas de entrar."
+    actionsTitle="Cómo ingresar"
+    primaryHref="/inscripcion-2026"
+    primaryLabel="Inscripción Ingresantes 2026"
+    secondaryHref="/carreras/nocturno-adultos"
+    secondaryLabel="Nocturno para adultos"
+  />
+
+</Layout>

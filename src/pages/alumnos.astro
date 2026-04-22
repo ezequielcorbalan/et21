@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import RequirementsCards from '../components/blocks/RequirementsCards.astro';
+import SplitInfo from '../components/blocks/SplitInfo.astro';
+import Timeline from '../components/blocks/Timeline.astro';
+---
+
+<Layout
+  title="Espacio del alumno — ET Nº 21 Fragata Libertad"
+  description="Trámites, tutoría, calendario académico 2026 y canales de asistencia. Todo lo que necesitás durante tu cursada en la Escuela Técnica Nº 21."
+>
+  <PageHero
+    breadcrumbs={[{ label: 'Inicio', href: '/' }, { label: 'Alumnos' }]}
+    kicker="Alumnos"
+    title="Espacio"
+    italicTitle="del alumno."
+    lede="Trámites, documentación, calendario académico y canales de acompañamiento. Todo lo que necesitás durante tu cursada en la escuela."
+  />
+
+  <!-- Trámites frecuentes -->
+  <section class="section-pad" id="tramites">
+    <div class="container-et">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div>
+          <div class="kicker">Trámites frecuentes</div>
+          <h2 class="h-display text-[34px] md:text-[40px]">
+            Gestiones que podés <span class="italic-serif">hacer online.</span>
+          </h2>
+        </div>
+        <p class="text-body text-[15px] leading-relaxed md:max-w-xs">
+          Certificados, constancias y documentación. Los trámites se solicitan en secretaría con DNI del alumno/a.
+        </p>
+      </div>
+
+      <RequirementsCards
+        cards={[
+          {
+            variant: 'green',
+            tag: 'Documentación',
+            title: 'Constancia de alumno regular',
+            items: [
+              'Se entrega en 48 hs hábiles',
+              'Sirve para SUBE, trámites laborales, becas',
+              'Solicitar en secretaría o por mail',
+            ],
+            ctaHref: '/contacto#formulario',
+            ctaLabel: 'Solicitar por mail',
+            ctaVariant: 'ghost',
+          },
+          {
+            variant: 'gold',
+            tag: 'Documentación',
+            title: 'Analítico y certificado de materias',
+            items: [
+              'Analítico parcial durante la cursada',
+              'Analítico definitivo al egresar',
+              'Entrega en 7 días hábiles',
+            ],
+            ctaHref: '/contacto#formulario',
+            ctaLabel: 'Solicitar por mail',
+            ctaVariant: 'ghost',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Tutoría -->
+  <SplitInfo
+    id="tutoria"
+    alt={true}
+    kicker="Tutoría"
+    titleLine1="Un profesor"
+    titleLine2Italic="que te acompaña."
+    paragraphs={[
+      'Cada curso tiene un tutor asignado. El tutor es el primer punto de contacto para consultas académicas, dudas sobre materias, y cuestiones del día a día escolar.',
+      'Si necesitás apoyo académico extra, consultá por los espacios de <strong>clases de apoyo</strong> disponibles para distintas materias.',
+    ]}
+    ctaHref="/contacto#formulario"
+    ctaLabel="Contactar al tutor"
+    ctaVariant="primary"
+    boxTitle="Qué hace la tutoría"
+    boxItems={[
+      'Acompañamiento académico individualizado',
+      'Seguimiento del desempeño en cada materia',
+      'Articulación con las familias',
+      'Derivación a espacios de apoyo cuando corresponde',
+      'Intervención en conflictos entre alumnos',
+    ]}
+  />
+
+  <!-- Calendario académico -->
+  <Timeline
+    id="calendario"
+    kicker="Calendario académico 2026"
+    titleLine1="Fechas"
+    titleLine2Italic="importantes."
+    description="Comienzo de clases, períodos de evaluación, vacaciones y mesas de examen."
+    items={[
+      { n: 'M', title: 'Marzo 2026', description: 'Comienzo del ciclo lectivo' },
+      { n: 'J', title: 'Julio 2026', description: 'Receso invernal (2 semanas)' },
+      { n: 'D', title: 'Diciembre 2026', description: 'Cierre de cursada y mesas de examen' },
+      { n: 'F', title: 'Febrero 2027', description: 'Mesas de examen complementarias' },
+    ]}
+  />
+
+  <!-- Asistencia ante violencia -->
+  <SplitInfo
+    id="violencia"
+    alt={true}
+    boxVariant="navy"
+    kicker="Asistencia ante violencia"
+    titleLine1="Nadie"
+    titleLine2Italic="está solo."
+    paragraphs={[
+      'La ET21 cuenta con un <strong>equipo de orientación escolar</strong> que atiende situaciones de violencia escolar, de género, intrafamiliar o acoso entre pares. El contacto es totalmente confidencial.',
+      'Si estás atravesando una situación compleja o conocés a alguien que la esté pasando, escribí o pedí una entrevista en cualquier momento.',
+    ]}
+    boxTitle="Líneas de contacto"
+    boxItems={[
+      '<strong>Equipo de orientación</strong><br>orientacion@et21.com.ar',
+      '<strong>Línea 102</strong><br>Ministerio de Desarrollo Humano (24 hs)',
+      '<strong>Línea 144</strong><br>Violencia de género — Nación (24 hs)',
+    ]}
+  />
+</Layout>

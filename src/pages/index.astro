@@ -1,13 +1,289 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HomeHero from '../components/blocks/HomeHero.astro';
+import BuildingStrip from '../components/blocks/BuildingStrip.astro';
+import DualPath from '../components/blocks/DualPath.astro';
+import CarrerasGrid from '../components/blocks/CarrerasGrid.astro';
+import Heritage from '../components/blocks/Heritage.astro';
+import TrustStrip from '../components/blocks/TrustStrip.astro';
+import VidaEscolar from '../components/blocks/VidaEscolar.astro';
+import BlogPreview from '../components/blocks/BlogPreview.astro';
+import FAQBlock from '../components/blocks/FAQBlock.astro';
+import LocationBlock from '../components/blocks/LocationBlock.astro';
+import FinalCTA from '../components/blocks/FinalCTA.astro';
 ---
+
 <Layout
-  title="ET21 (dev) — migración en progreso"
-  description="Placeholder temporal durante la migración a Astro."
-  noindex
+  title='Escuela Técnica Nº 21 "Fragata Libertad" — Núñez 3638, CABA'
+  description="Escuela técnica pública en CABA. Maestro Mayor de Obras y Técnico en Computación con título oficial. Turno diurno para ingresantes y nocturno para adultos. Inscripción 2026 abierta."
 >
-  <main class="container-et section-pad">
-    <h1 class="text-5xl font-extrabold">Migración en progreso</h1>
-    <p class="mt-4">Nav y footer deberían renderizar arriba y abajo.</p>
-  </main>
+
+  <!-- 1. Hero -->
+  <HomeHero
+    kicker="Escuela técnica pública · CABA"
+    titleLine1="Formamos técnicos con"
+    titleLine2Italic="oficio y criterio."
+    lede="Desde 1952 enseñamos <strong>Maestro Mayor de Obras</strong> y <strong>Técnico en Computación</strong> con título oficial. Turno diurno para ingresantes y <strong>nocturno para adultos</strong> que quieren terminar su secundario técnico."
+    primaryCtaHref="/inscripcion-2026"
+    primaryCtaLabel="Inscripción 2026"
+    secondaryCtaHref="/institucional"
+    secondaryCtaLabel="Conocé la escuela"
+    heroImage="/images/patio-palmeras.jpg"
+    heroAlt="Patio interior del nuevo edificio de la ET21 con palmeras y fachada moderna"
+    badges={[
+      { label: 'Fundada', value: '1952 — 74 años' },
+      { label: 'Carreras', value: 'MMO · Computación' },
+      { label: 'Turnos', value: 'Mañana · Tarde · Noche' },
+    ]}
+    metaLocation="Núñez 3638 · CABA"
+    metaAuthority="Min. de Educación CABA"
+  />
+
+  <!-- 2. Building strip -->
+  <BuildingStrip
+    tiles={[
+      {
+        href: '/institucional',
+        image: '/images/fachada-calle.jpg',
+        alt: 'Fachada del nuevo edificio de la ET21 en Núñez 3638',
+        chip: 'Nuevo edificio',
+        caption: 'Núñez 3638 · Laboratorios y aulas modernas',
+      },
+      {
+        href: '/institucional',
+        image: '/images/fachada-historica.jpg',
+        alt: 'Fachada histórica del edificio original de 1952',
+        chip: '74 años de historia',
+        caption: 'Fachada del edificio original',
+      },
+    ]}
+  />
+
+  <!-- 3. Dual path -->
+  <DualPath
+    paths={[
+      {
+        href: '/inscripcion-2026',
+        icon: '👨‍👩‍👧',
+        title: '¿Tu hijo/a termina 7° grado?',
+        description: 'Inscripción 2026 abierta para ingresantes al ciclo básico. Fechas, requisitos y examen diagnóstico.',
+        linkLabel: 'Ver inscripción ingresantes →',
+      },
+      {
+        href: '/carreras/nocturno-adultos',
+        icon: '🎓',
+        title: '¿Querés terminar tu secundario técnico?',
+        description: 'Turno nocturno para adultos +16. Maestro Mayor de Obras y Técnico en Computación con título oficial.',
+        linkLabel: 'Ver nocturno adultos →',
+      },
+    ]}
+  />
+
+  <!-- 4. Carreras grid -->
+  <CarrerasGrid
+    kicker="Nuestras carreras"
+    titleLine1="Dos oficios, un mismo rigor"
+    titleLine2Italic="técnico."
+    description="Carreras de 6 años con plan oficial del Ministerio de Educación. Prácticas profesionalizantes desde 4° año."
+    carreras={[
+      {
+        href: '/carreras/maestro-mayor-de-obras',
+        image: '/images/patio-naranja.jpg',
+        imageAlt: 'Maestro Mayor de Obras',
+        tag: '6 años · Título oficial',
+        title: 'Maestro Mayor de Obras',
+        meta: 'Construcción · Arquitectura · Estructuras',
+        bullets: [
+          'Dirección e interpretación de planos de obra',
+          'Cálculo de estructuras y materiales',
+          'Habilitación para firmar planos municipales',
+        ],
+        length: '6 años · mañana o tarde',
+        linkLabel: 'Conocer carrera →',
+      },
+      {
+        href: '/carreras/tecnico-en-computacion',
+        image: '/images/patio-palmeras.jpg',
+        imageAlt: 'Técnico en Computación',
+        tag: '6 años · Título oficial',
+        title: 'Técnico en Computación',
+        meta: 'Programación · Redes · Desarrollo · Robótica',
+        bullets: [
+          'Programación en múltiples lenguajes',
+          'Administración de redes y sistemas',
+          'Robótica, bases de datos y desarrollo',
+        ],
+        length: '6 años · mañana o tarde',
+        linkLabel: 'Conocer carrera →',
+      },
+    ]}
+  />
+
+  <!-- 5. Heritage -->
+  <Heritage
+    image="/images/fachada-historica.jpg"
+    imageAlt="Fachada histórica del edificio original"
+    imageOverlay="Edificio original · 1952"
+    kicker="Nuestra historia"
+    titleLine1="Setenta y cuatro años formando"
+    titleLine2Italic="técnicos de oficio."
+    paragraphs={[
+      'La Escuela Técnica Nº 21 "Fragata Escuela Libertad" abrió sus puertas en 1952 y desde entonces formó a generaciones de Maestros Mayores de Obras y Técnicos en Computación que hoy trabajan en todo el país.',
+      'En 2019 inauguramos nuestro <strong>nuevo edificio en Núñez 3638</strong>, con aulas modernas, laboratorios de computación y espacios de taller a medida. Pero nuestra esencia sigue siendo la misma: formar con rigor y con valores.',
+    ]}
+    facts={[
+      { label: 'Fundación', value: 'Octubre de 1952' },
+      { label: 'Patronímica', value: 'Fragata Escuela Libertad' },
+      { label: 'Nuevo edificio', value: '2019 · Núñez 3638' },
+      { label: 'Distrito Escolar', value: 'D.E. 10 · CABA' },
+    ]}
+    ctaHref="/institucional"
+    ctaLabel="Ver página institucional"
+  />
+
+  <!-- 6. Trust strip -->
+  <TrustStrip
+    kicker="Por qué ET Nº 21"
+    titleLine1="Una escuela con"
+    titleLine2Italic="historia, rigor y calle."
+    stats={[
+      { num: '1952', label: 'Fundada hace 74 años. Tradición técnica en CABA.' },
+      { num: '+3.200', label: 'Egresados trabajando en todo el país como técnicos.' },
+      { num: '6', label: 'Años de formación técnica con título oficial.' },
+      { num: '3', label: 'Turnos: mañana, tarde y nocturno para adultos.' },
+    ]}
+  />
+
+  <!-- 7. Vida escolar -->
+  <VidaEscolar
+    kicker="Vida escolar"
+    titleLine1="El oficio no se enseña"
+    titleLine2Italic="solo en el aula."
+    description="Espacios de taller, laboratorios, proyectos y eventos. Mostramos cómo es el día a día en la escuela."
+    projects={[
+      {
+        href: '/blog',
+        image: '/images/patio-naranja.jpg',
+        alt: 'Patio interior',
+        label: 'Instalaciones · 2019',
+        title: 'Patios y espacios comunes del nuevo edificio',
+        large: true,
+      },
+      {
+        href: '/blog',
+        image: '/images/edificio-lateral.jpg',
+        alt: 'Edificio',
+        label: 'Infraestructura',
+        title: 'Laboratorios modernos',
+      },
+      {
+        href: '/blog',
+        image: '/images/edificio-esquina.jpg',
+        alt: 'Comunidad',
+        label: 'Comunidad',
+        title: 'Actividades y muestras',
+      },
+    ]}
+  />
+
+  <!-- 8. Blog preview -->
+  <BlogPreview
+    kicker="Blog"
+    titleLine1="Novedades y"
+    titleLine2Italic="guías útiles."
+    description="Artículos para familias y aspirantes. Cómo funciona el ingreso, qué hace un técnico, qué se enseña acá."
+    posts={[
+      {
+        href: '/blog/como-prepararte-examen-ingreso',
+        image: '/images/patio-palmeras.jpg',
+        category: 'Ingreso',
+        title: 'Cómo prepararte para el examen de ingreso a la ET21',
+        excerpt: 'Guía práctica para chicos de 7° grado: qué se evalúa, cómo se rinde, y recursos de estudio.',
+        meta: '6 min · Abril 2026',
+      },
+      {
+        href: '/blog/que-hace-maestro-mayor-de-obras',
+        image: '/images/fachada-calle.jpg',
+        category: 'Construcción',
+        title: 'Qué hace un Maestro Mayor de Obras (y por qué se está pagando tan bien)',
+        excerpt: 'Incumbencias profesionales, rangos salariales y las áreas donde hay más demanda hoy.',
+        meta: '8 min · Marzo 2026',
+      },
+      {
+        href: '/blog/terminar-secundario-tecnico-de-noche',
+        image: '/images/patio-naranja.jpg',
+        category: 'Nocturno',
+        title: 'Terminar el secundario técnico de noche: cómo funciona',
+        excerpt: 'Requisitos, carga horaria, modalidad y cómo es el día a día de un alumno adulto del nocturno.',
+        meta: '7 min · Febrero 2026',
+      },
+    ]}
+    seeAllHref="/blog"
+    seeAllLabel="Ver todos los artículos"
+  />
+
+  <!-- 9. FAQ block -->
+  <FAQBlock
+    kicker="Preguntas frecuentes"
+    titleLine1="Lo que preguntan"
+    titleLine2Italic="las familias."
+    sideText="Si tenés una pregunta específica sobre inscripción, documentación o el día a día de la escuela, consultá las más comunes o escribinos directamente a secretaría."
+    sideCtaHref="/contacto"
+    sideCtaLabel="Contactar secretaría"
+    withSchema={true}
+    items={[
+      {
+        q: '¿Cuáles son los requisitos de inscripción para 1° año?',
+        a: 'Certificado de 7° grado en trámite, DNI del alumno/a y del adulto responsable, 2 fotos 4x4 y comprobante de domicilio. El examen diagnóstico se rinde en noviembre.',
+      },
+      {
+        q: '¿La escuela tiene costo?',
+        a: 'No, somos una escuela pública del Ministerio de Educación de la Ciudad de Buenos Aires. La cuota es gratuita y se entrega mochila técnica a los ingresantes.',
+      },
+      {
+        q: '¿Qué edad se necesita para el nocturno?',
+        a: 'Para cursar el nocturno se requiere tener 16 años cumplidos al momento de inscripción (o cumplirlos durante el ciclo lectivo con autorización de un adulto responsable). No hay tope máximo de edad.',
+      },
+      {
+        q: '¿El título habilita a ejercer la profesión?',
+        a: 'Sí. Ambos títulos son oficiales y habilitantes. El Maestro Mayor de Obras puede firmar planos municipales y dirigir obras. El Técnico en Computación está habilitado para trabajar en desarrollo, redes y sistemas.',
+      },
+      {
+        q: '¿Cómo llego? ¿Qué colectivos paran cerca?',
+        a: 'Estamos en Núñez 3638, CABA. Líneas de colectivo cercanas: 29, 42, 60, 114, 130, 184. Subte Línea D (estación Congreso de Tucumán) a pocas cuadras.',
+      },
+      {
+        q: '¿Hay turno doble o solo uno?',
+        a: 'El ciclo básico (1° a 3° año) es de turno simple (mañana o tarde). El ciclo superior (4° a 6° año) tiene jornada extendida con talleres y prácticas profesionalizantes.',
+      },
+    ]}
+  />
+
+  <!-- 10. Location block -->
+  <LocationBlock
+    kicker="Dónde estamos"
+    titleLine1="Núñez 3638"
+    titleLine2Italic="· CABA"
+    address="Núñez 3638, Ciudad Autónoma de Buenos Aires"
+    description="Edificio nuevo con aulas modernas, laboratorios de computación y talleres a medida. A pocos minutos del subte D y múltiples líneas de colectivo."
+    tel="(011) 4543-7363"
+    mail="info@et21.com.ar"
+    hours="Secretaría 8–18 hs · Nocturno 18–23 hs"
+    ctaHref="/contacto"
+    ctaLabel="Ver página de contacto"
+  />
+
+  <!-- 11. Final CTA -->
+  <FinalCTA
+    kicker="Inscripción 2026"
+    titleLine1="Sumate a la"
+    titleLine2Italic="Fragata Libertad."
+    copy="Dos caminos, una sola escuela. Elegí el que te corresponda y te esperamos en Núñez 3638."
+    actionsTitle="Elegí tu camino"
+    primaryHref="/inscripcion-2026"
+    primaryLabel="Ingresante 2026"
+    secondaryHref="/carreras/nocturno-adultos"
+    secondaryLabel="Nocturno adultos"
+  />
+
 </Layout>

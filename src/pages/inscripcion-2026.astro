@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import Section from '../components/ui/Section.astro';
+import RequirementsCards from '../components/blocks/RequirementsCards.astro';
+import Timeline from '../components/blocks/Timeline.astro';
+import FAQBlock from '../components/blocks/FAQBlock.astro';
+import FinalCTA from '../components/blocks/FinalCTA.astro';
+
+const reqCards = [
+  {
+    variant: 'green' as const,
+    tag: 'Ingresantes al ciclo básico',
+    title: 'Inscripción a 1° año',
+    items: [
+      'Chicos/as que terminan 7° grado en 2025',
+      'Edad: 12–13 años al ingreso',
+      'Turno mañana o tarde',
+      'Examen diagnóstico en noviembre 2025',
+    ],
+    ctaHref: '#requisitos',
+    ctaLabel: 'Ver requisitos completos',
+    ctaVariant: 'primary' as const,
+  },
+  {
+    variant: 'gold' as const,
+    tag: 'Adultos — turno nocturno',
+    title: 'Inscripción Nocturno 2026',
+    items: [
+      'Adultos +16 años',
+      'MMO o Técnico en Computación (3 años)',
+      'Horario: 18–23 hs',
+      'Inscripción abierta desde el 15 de noviembre',
+    ],
+    ctaHref: '/carreras/nocturno-adultos',
+    ctaLabel: 'Ver detalles del nocturno',
+    ctaVariant: 'gold' as const,
+  },
+];
+
+const timelineItems = [
+  {
+    n: '1',
+    title: 'Septiembre 2025',
+    description: 'Charla informativa presencial y virtual para familias',
+  },
+  {
+    n: '2',
+    title: 'Octubre 2025',
+    description: 'Preinscripción online vía buenosaires.gob.ar',
+  },
+  {
+    n: '3',
+    title: 'Noviembre 2025',
+    description: 'Examen diagnóstico y entrega de documentación',
+  },
+  {
+    n: '4',
+    title: 'Marzo 2026',
+    description: 'Comienzo del ciclo lectivo',
+  },
+];
+
+const faqItems = [
+  {
+    q: '¿Tengo que venir presencialmente a inscribirme?',
+    a: 'La preinscripción inicial se hace online en el sistema del Ministerio de Educación de CABA (buenosaires.gob.ar/inscripcionescolar). La documentación definitiva se entrega en la secretaría de la escuela con turno previo.',
+  },
+  {
+    q: '¿Hay prioridad por cercanía?',
+    a: 'Sí. El sistema prioriza hermanos/as en la escuela y luego cercanía al domicilio. Los aspirantes que quedan fuera del cupo pasan a una lista de espera por orden de prioridad.',
+  },
+  {
+    q: '¿Qué se evalúa en el examen diagnóstico?',
+    a: 'Es un diagnóstico, no un examen eliminatorio. Se evalúan conocimientos básicos de Matemática y Lengua para organizar los grupos de primer año.',
+  },
+  {
+    q: '¿Puedo cambiar de turno una vez inscripto?',
+    a: 'Los cambios de turno se evalúan caso por caso al finalizar el primer trimestre, siempre sujetos a disponibilidad de vacantes.',
+  },
+];
+---
+
+<Layout
+  title="Inscripción 2026 — Escuela Técnica Nº 21 Fragata Libertad"
+  description="Inscripción abierta para el ciclo lectivo 2026. Cronograma, requisitos y preguntas frecuentes para ingresantes al ciclo básico y adultos del turno nocturno."
+>
+  <PageHero
+    breadcrumbs={[{ label: 'Inicio', href: '/' }, { label: 'Inscripción 2026' }]}
+    kicker="Ciclo lectivo 2026"
+    title="Inscripción 2026"
+    italicTitle="abierta."
+    lede="Dos caminos de inscripción según tu caso. Elegí el que corresponda, revisá requisitos y fechas, y acercate a la escuela."
+  />
+
+  <!-- Caminos: ingresantes + nocturno -->
+  <Section id="caminos">
+    <RequirementsCards cards={reqCards} />
+  </Section>
+
+  <!-- Cronograma: Timeline renders its own <section> with section-alt -->
+  <Timeline
+    id="cronograma"
+    kicker="Cronograma 2026"
+    titleLine1="Fechas"
+    titleLine2Italic="clave."
+    description="El calendario oficial de inscripción, examen y comienzo de clases."
+    items={timelineItems}
+  />
+
+  <!-- Requisitos: documentación necesaria -->
+  <Section id="requisitos">
+    <div class="mb-12">
+      <div class="kicker">Requisitos</div>
+      <h2 class="h-display text-[34px] md:text-[40px]">
+        Documentación <span class="italic-serif">necesaria.</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Ingresantes a 1° año -->
+      <div class="bg-cream rounded-2xl p-8 border border-line">
+        <h3 class="text-[20px] font-bold text-ink mb-5">Para ingresantes a 1° año</h3>
+        <ul class="flex flex-col">
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>Certificado de 7° grado (en trámite o definitivo)</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>DNI del alumno/a (original + copia)</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>DNI del adulto responsable</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>2 fotos 4x4 actualizadas</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>Comprobante de domicilio</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 text-[15px] text-body">
+            <span class="text-green-inst font-bold flex-shrink-0">✓</span>
+            <span>Ficha de salud completa</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Adultos en el nocturno -->
+      <div class="bg-[#FFF9E8] rounded-2xl p-8 border border-gold-bright">
+        <h3 class="text-[20px] font-bold text-ink mb-5">Para adultos en el nocturno</h3>
+        <ul class="flex flex-col">
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>DNI vigente (original + copia)</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>Analítico parcial o certificado de materias cursadas</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>Partida de nacimiento</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>Constancia de pase (si viene de otra escuela)</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 border-b border-dashed border-line text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>2 fotos 4x4</span>
+          </li>
+          <li class="flex items-start gap-3 py-3 text-[15px] text-body">
+            <span class="text-gold font-bold flex-shrink-0">✓</span>
+            <span>Comprobante de domicilio</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FAQ -->
+  <FAQBlock
+    id="faq"
+    kicker="Preguntas frecuentes"
+    titleLine1="Sobre la"
+    titleLine2Italic="inscripción."
+    sideText="¿Tenés dudas sobre el proceso? Encontrá las respuestas más comunes o contactá directamente a la secretaría."
+    sideCtaHref="/contacto"
+    sideCtaLabel="Contactar secretaría"
+    items={faqItems}
+    withSchema={true}
+  />
+
+  <!-- Final CTA -->
+  <FinalCTA
+    kicker="¿Dudas?"
+    titleLine1="Escribinos a"
+    titleLine2Italic="secretaría."
+    copy="Si tenés una pregunta específica sobre tu caso, contactanos y te respondemos en 48 hs."
+    actionsTitle="Contacto directo"
+    primaryHref="/contacto"
+    primaryLabel="Formulario de contacto"
+    secondaryHref="mailto:info@et21.com.ar"
+    secondaryLabel="info@et21.com.ar"
+  />
+</Layout>
