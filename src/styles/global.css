@@ -63,4 +63,13 @@
   .h-display {
     @apply font-extrabold leading-[1.03] tracking-[-2px] text-ink;
   }
+
+  .prose-et p { @apply text-[17px] text-body leading-[1.7] mb-5; }
+  .prose-et h2 { @apply text-3xl font-bold text-ink mt-10 mb-5 tracking-[-1px]; }
+  .prose-et h3 { @apply text-2xl font-bold text-ink mt-8 mb-4 tracking-[-0.6px]; }
+  .prose-et ul, .prose-et ol { @apply my-5 pl-5; }
+  .prose-et li { @apply text-[17px] text-body leading-[1.7] py-1 list-disc; }
+  .prose-et ol li { @apply list-decimal; }
+  .prose-et blockquote { @apply border-l-4 border-gold py-2.5 pl-6 my-7 text-[22px] leading-[1.4] text-ink italic-serif; }
+  .prose-et a { @apply text-gold font-bold underline underline-offset-2; }
 }

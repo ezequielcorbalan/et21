@@ -1,0 +1,84 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/ui/Breadcrumb.astro';
+import BlogCard from '../../components/blocks/BlogCard.astro';
+import SchemaBlogPosting from '../../components/seo/SchemaBlogPosting.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post, allPosts: posts },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
+}
+
+const { post, allPosts } = Astro.props;
+const { Content } = await post.render();
+const { title, description, category, pubDate, heroImage, heroAlt, readingMinutes, author } = post.data;
+
+const related = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
+const pubStr = pubDate.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
+const canonical = `https://et21.com.ar/blog/${post.slug}/`;
+---
+<Layout
+  title={`${title} — Blog ET21`}
+  description={description}
+  canonical={canonical}
+  ogImage={heroImage}
+>
+  <Fragment slot="schema">
+    <SchemaBlogPosting
+      headline={title}
+      description={description}
+      image={`https://et21.com.ar${heroImage}`}
+      datePublished={pubDate}
+      author={author}
+      url={canonical}
+    />
+  </Fragment>
+
+  <section class="bg-navy text-white py-[70px] px-8 pb-[50px] relative overflow-hidden">
+    <div class="absolute -top-[200px] -right-[100px] w-[500px] h-[500px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(212,160,23,0.2) 0%, transparent 70%);"></div>
+    <div class="container-et relative">
+      <Breadcrumb items={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Blog', href: '/blog/' },
+        { label: category },
+      ]} />
+      <div class="kicker kicker-light">{category} · {readingMinutes} min de lectura</div>
+      <h1 class="text-white text-5xl font-extrabold leading-[1.02] tracking-[-2px] max-w-[900px]">{title}</h1>
+    </div>
+  </section>
+
+  <article class="max-w-[780px] mx-auto py-[60px] px-8">
+    <div class="text-[13px] text-muted py-5 border-t border-b border-line mb-[30px] flex gap-5 flex-wrap">
+      <span>✍️ {author}</span>
+      <span>📅 {pubStr}</span>
+      <span>🏷 {category}</span>
+    </div>
+
+    <div class="h-[420px] rounded-2xl overflow-hidden mb-10">
+      <img src={heroImage} alt={heroAlt} class="w-full h-full object-cover" />
+    </div>
+
+    <div class="prose-et">
+      <Content />
+    </div>
+  </article>
+
+  <section class="section-alt section-pad">
+    <div class="container-et">
+      <div class="kicker mb-5">Seguí leyendo</div>
+      <h2 class="text-4xl font-extrabold mb-10 tracking-[-1.5px]">Artículos <span class="italic-serif text-gold font-medium">relacionados.</span></h2>
+      <div class="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+        {related.map(p => <BlogCard post={p} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

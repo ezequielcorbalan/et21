@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import Section from '../../components/ui/Section.astro';
+import BlogCard from '../../components/blocks/BlogCard.astro';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const categories = ['Todos', 'Ingreso', 'Construcción', 'Tecnología', 'Nocturno', 'Vida escolar', 'Institucional'];
+---
+<Layout
+  title="Blog — Novedades y guías | ET Nº 21 Fragata Libertad CABA"
+  description="Guías de ingreso, incumbencias profesionales, vida escolar y novedades de la Escuela Técnica Nº 21 en CABA. Lo que las familias y aspirantes quieren saber."
+>
+  <PageHero
+    breadcrumbs={[{label:'Inicio', href:'/'}, {label:'Blog'}]}
+    kicker="Novedades y guías"
+    title="El blog de"
+    italicTitle="la Fragata."
+    lede="Guías de ingreso, incumbencias profesionales, vida escolar y novedades institucionales. Lo que las familias y aspirantes quieren saber."
+  />
+
+  <Section>
+    <div class="flex gap-2.5 mb-10 flex-wrap">
+      {categories.map((cat, i) => (
+        <button class={`px-4 py-2 text-[13px] font-semibold rounded-lg border-[1.5px] transition-all ${i === 0 ? 'bg-navy text-white border-navy' : 'border-ink text-ink hover:bg-ink hover:text-white'}`}>
+          {cat}
+        </button>
+      ))}
+    </div>
+    <div class="grid grid-cols-3 gap-6 max-md:grid-cols-1">
+      {posts.map(post => <BlogCard post={post} />)}
+    </div>
+  </Section>
+</Layout>
