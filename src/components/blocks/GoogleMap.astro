@@ -1,0 +1,32 @@
+---
+interface Props {
+  address: string;
+  label?: string;
+  height?: number;
+}
+
+const { address, label = address, height = 260 } = Astro.props;
+const encoded = encodeURIComponent(address);
+---
+
+<div class="rounded-xl overflow-hidden border border-line shadow-[0_10px_30px_-15px_rgba(11,37,69,0.2)]">
+  <iframe
+    title={`Ubicación — ${label}`}
+    src={`https://www.google.com/maps?q=${encoded}&output=embed`}
+    width="100%"
+    height={height}
+    style="border:0; display:block;"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen
+  ></iframe>
+  <div class="p-3 bg-cream flex justify-between items-center text-[13px]">
+    <div><strong class="text-ink">📍 {label}</strong></div>
+    <a
+      href={`https://www.google.com/maps/dir/?api=1&destination=${encoded}`}
+      target="_blank"
+      rel="noopener"
+      class="text-gold no-underline font-bold"
+    >Cómo llegar ↗</a>
+  </div>
+</div>

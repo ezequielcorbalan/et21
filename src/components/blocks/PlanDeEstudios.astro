@@ -1,0 +1,54 @@
+---
+interface Year {
+  year: string;
+  label: string;
+  subjects: string[];
+}
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  description?: string;
+  years: Year[];
+}
+
+const { kicker, titleLine1, titleLine2Italic, description, years } = Astro.props;
+---
+
+<section class="section-pad section-alt">
+  <div class="container-et">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[34px] md:text-[40px]">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+      </div>
+      {description && (
+        <p class="text-body text-[15px] leading-relaxed md:max-w-sm">{description}</p>
+      )}
+    </div>
+
+    <!-- Year grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      {years.map((y) => (
+        <div class="bg-white rounded-xl border border-line p-5 flex flex-col gap-3">
+          <!-- Year number (big italic Fraunces in gold) -->
+          <div class="italic-serif text-gold text-[52px] leading-none font-semibold">{y.year}</div>
+          <!-- Label -->
+          <div class="text-[10px] font-extrabold uppercase tracking-[1.4px] text-muted">{y.label}</div>
+          <!-- Subjects -->
+          <ul class="flex flex-col gap-1.5 mt-1">
+            {y.subjects.map((s) => (
+              <li class="text-[13px] text-body leading-snug flex items-start gap-1.5">
+                <span class="text-gold mt-0.5 flex-shrink-0 text-[10px]">▸</span>
+                <span>{s}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

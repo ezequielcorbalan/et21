@@ -1,0 +1,52 @@
+---
+interface Authority {
+  initial: string;
+  name: string;
+  role: string;
+}
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  description?: string;
+  items: Authority[];
+}
+
+const { kicker, titleLine1, titleLine2Italic, description, items } = Astro.props;
+---
+
+<section class="section-pad">
+  <div class="container-et">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[34px] md:text-[40px]">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+      </div>
+      {description && (
+        <p class="text-body text-[15px] leading-relaxed md:max-w-sm" set:html={description} />
+      )}
+    </div>
+
+    <!-- Authority grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      {items.map((auth) => (
+        <div class="bg-white border border-line rounded-xl p-5 flex flex-col items-center text-center gap-3">
+          <!-- Avatar circle with initial -->
+          <div class="w-14 h-14 rounded-full bg-navy flex items-center justify-center flex-shrink-0">
+            <span class="italic-serif text-gold-bright text-[24px] font-semibold leading-none">
+              {auth.initial}
+            </span>
+          </div>
+          <!-- Name + role -->
+          <div>
+            <div class="text-[14px] font-bold text-ink leading-snug">{auth.name}</div>
+            <div class="text-[12px] text-muted mt-1 leading-snug">{auth.role}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

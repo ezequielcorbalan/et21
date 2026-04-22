@@ -1,0 +1,54 @@
+---
+interface TimelineItem {
+  n: string;
+  title: string;
+  description: string;
+}
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  description?: string;
+  items: TimelineItem[];
+  id?: string;
+}
+
+const { kicker, titleLine1, titleLine2Italic, description, items, id } = Astro.props;
+---
+
+<section class="section-pad section-alt" id={id}>
+  <div class="container-et">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[34px] md:text-[40px]">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+      </div>
+      {description && (
+        <p class="text-body text-[15px] leading-relaxed md:max-w-xs">{description}</p>
+      )}
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden md:block absolute top-[28px] left-[calc(12.5%)] right-[calc(12.5%)] h-[2px] bg-line z-0" />
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
+        {items.map((item) => (
+          <div class="relative flex flex-col items-center text-center z-10">
+            <!-- Dot -->
+            <div class="w-14 h-14 rounded-full border-2 border-gold bg-white flex items-center justify-center mb-5 flex-shrink-0">
+              <span class="italic-serif text-gold text-[22px] font-semibold leading-none">{item.n}</span>
+            </div>
+            <!-- Content -->
+            <h4 class="text-[15px] font-bold text-ink mb-2 leading-snug">{item.title}</h4>
+            <p class="text-[14px] text-body leading-snug">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

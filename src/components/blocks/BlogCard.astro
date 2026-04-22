@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
+const { title, description, category, pubDate, heroImage, heroAlt, readingMinutes } = post.data;
+const href = `/blog/${post.slug}/`;
+const pubStr = pubDate.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
+---
+<a href={href} class="block bg-white border border-line rounded-[14px] overflow-hidden no-underline text-inherit transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-[0_8px_30px_-10px_rgba(11,37,69,0.2)] flex flex-col">
+  <div class="h-[180px] bg-cream overflow-hidden">
+    <img src={heroImage} alt={heroAlt} class="w-full h-full object-cover" loading="lazy" />
+  </div>
+  <div class="p-[22px] flex-1 flex flex-col">
+    <div class="text-[10px] tracking-[1.6px] uppercase font-extrabold text-gold mb-2.5">{category}</div>
+    <h3 class="text-[17px] font-bold text-ink leading-[1.3] mb-2.5 tracking-[-0.4px]">{title}</h3>
+    <p class="text-sm text-body flex-1 leading-[1.5]">{description}</p>
+    <div class="text-xs text-muted mt-3.5 pt-3.5 border-t border-line">{readingMinutes} min · {pubStr}</div>
+  </div>
+</a>

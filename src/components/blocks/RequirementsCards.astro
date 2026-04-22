@@ -1,0 +1,78 @@
+---
+interface ReqCard {
+  variant: 'green' | 'gold' | 'navy';
+  tag: string;
+  title: string;
+  items: string[];
+  ctaHref?: string;
+  ctaLabel?: string;
+  ctaVariant?: 'primary' | 'ghost' | 'gold';
+}
+interface Props {
+  cards: ReqCard[];
+}
+
+const { cards } = Astro.props;
+
+const cardStyles: Record<ReqCard['variant'], string> = {
+  green: 'bg-green-soft border-green-inst',
+  gold: 'bg-[#FFF9E8] border-gold-bright',
+  navy: 'bg-navy text-white border-navy',
+};
+
+const checkColor: Record<ReqCard['variant'], string> = {
+  green: 'text-green-inst',
+  gold: 'text-gold-bright',
+  navy: 'text-gold-bright',
+};
+
+const tagColor: Record<ReqCard['variant'], string> = {
+  green: 'text-green-inst',
+  gold: 'text-gold',
+  navy: 'text-gold-bright',
+};
+
+const titleColor: Record<ReqCard['variant'], string> = {
+  green: 'text-ink',
+  gold: 'text-ink',
+  navy: 'text-white',
+};
+
+const itemColor: Record<ReqCard['variant'], string> = {
+  green: 'text-body',
+  gold: 'text-body',
+  navy: 'text-white/85',
+};
+
+const btnClass: Record<string, string> = {
+  primary: 'btn-primary',
+  ghost: 'btn-ghost',
+  gold: 'btn-gold',
+};
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {cards.map((card) => (
+    <div class={`rounded-2xl border-2 p-8 flex flex-col gap-5 ${cardStyles[card.variant]}`}>
+      <div class={`text-[11px] font-bold uppercase tracking-[1.8px] ${tagColor[card.variant]}`}>
+        {card.tag}
+      </div>
+      <h3 class={`text-[22px] font-bold leading-snug tracking-tight ${titleColor[card.variant]}`}>
+        {card.title}
+      </h3>
+      <ul class="flex flex-col gap-2.5 flex-1">
+        {card.items.map((item) => (
+          <li class={`flex items-start gap-3 text-[15px] leading-snug ${itemColor[card.variant]}`}>
+            <span class={`font-bold mt-0.5 flex-shrink-0 ${checkColor[card.variant]}`}>✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      {card.ctaHref && card.ctaLabel && (
+        <a href={card.ctaHref} class={btnClass[card.ctaVariant ?? 'ghost']}>
+          {card.ctaLabel} <span class="arrow">→</span>
+        </a>
+      )}
+    </div>
+  ))}
+</div>

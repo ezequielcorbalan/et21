@@ -1,0 +1,38 @@
+---
+interface Stat {
+  num: string;
+  description: string;
+}
+interface Props {
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  stats: Stat[];
+}
+
+const { kicker, titleLine1, titleLine2Italic, stats } = Astro.props;
+---
+
+<section class="section-pad">
+  <div class="container-et">
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="kicker">{kicker}</div>
+      <h2 class="h-display text-[34px] md:text-[40px]">
+        {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+      </h2>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {stats.map((stat) => (
+        <div class="bg-white rounded-2xl border border-line p-8 flex flex-col gap-4 shadow-[0_2px_16px_-8px_rgba(11,37,69,0.12)]">
+          <div class="italic-serif text-gold text-[40px] md:text-[48px] leading-none font-semibold">
+            {stat.num}
+          </div>
+          <p class="text-[15px] text-body leading-snug">{stat.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

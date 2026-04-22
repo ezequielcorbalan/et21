@@ -1,0 +1,77 @@
+---
+// No props — standalone mockup form
+---
+
+<form
+  class="flex flex-col gap-5"
+  onsubmit="event.preventDefault(); alert('Mockup: el formulario no está conectado a un backend. En producción esta consulta llegaría a secretaría.');"
+>
+  <!-- Nombre -->
+  <div class="flex flex-col gap-1.5">
+    <label class="text-[13px] font-semibold text-ink" for="cf-nombre">Nombre y apellido *</label>
+    <input
+      id="cf-nombre"
+      type="text"
+      required
+      placeholder="María Pérez"
+      class="bg-off-white border-[1.5px] border-line rounded-lg px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
+    />
+  </div>
+
+  <!-- Email -->
+  <div class="flex flex-col gap-1.5">
+    <label class="text-[13px] font-semibold text-ink" for="cf-email">Email *</label>
+    <input
+      id="cf-email"
+      type="email"
+      required
+      placeholder="maria@ejemplo.com"
+      class="bg-off-white border-[1.5px] border-line rounded-lg px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
+    />
+  </div>
+
+  <!-- Teléfono -->
+  <div class="flex flex-col gap-1.5">
+    <label class="text-[13px] font-semibold text-ink" for="cf-tel">Teléfono</label>
+    <input
+      id="cf-tel"
+      type="tel"
+      placeholder="11 5555-5555"
+      class="bg-off-white border-[1.5px] border-line rounded-lg px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
+    />
+  </div>
+
+  <!-- Motivo -->
+  <div class="flex flex-col gap-1.5">
+    <label class="text-[13px] font-semibold text-ink" for="cf-motivo">Motivo *</label>
+    <select
+      id="cf-motivo"
+      required
+      class="bg-off-white border-[1.5px] border-line rounded-lg px-4 py-3 text-[15px] text-ink focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition appearance-none cursor-pointer"
+    >
+      <option value="">Seleccioná un motivo…</option>
+      <option value="ingresante">Inscripción a 1° año (ingresante)</option>
+      <option value="nocturno">Inscripción Nocturno</option>
+      <option value="carreras">Consulta sobre carreras</option>
+      <option value="tramites">Trámites / documentación</option>
+      <option value="otro">Otro</option>
+    </select>
+  </div>
+
+  <!-- Mensaje -->
+  <div class="flex flex-col gap-1.5">
+    <label class="text-[13px] font-semibold text-ink" for="cf-mensaje">Mensaje *</label>
+    <textarea
+      id="cf-mensaje"
+      required
+      rows="5"
+      placeholder="Contanos en qué podemos ayudarte..."
+      class="bg-off-white border-[1.5px] border-line rounded-lg px-4 py-3 text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-y min-h-[120px]"
+    ></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="btn-primary justify-center w-full">
+    Enviar consulta <span class="arrow">→</span>
+  </button>
+</form>

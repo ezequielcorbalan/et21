@@ -1,0 +1,77 @@
+---
+interface Props {
+  id?: string;
+  kicker: string;
+  titleLine1: string;
+  titleLine2Italic: string;
+  paragraphs: string[];
+  ctaHref?: string;
+  ctaLabel?: string;
+  ctaVariant?: 'primary' | 'ghost';
+  boxVariant?: 'cream' | 'navy';
+  boxTitle: string;
+  boxItems: string[];
+  alt?: boolean;
+}
+
+const {
+  id,
+  kicker,
+  titleLine1,
+  titleLine2Italic,
+  paragraphs,
+  ctaHref,
+  ctaLabel,
+  ctaVariant = 'primary',
+  boxVariant = 'cream',
+  boxTitle,
+  boxItems,
+  alt = false,
+} = Astro.props;
+
+const sectionClass = alt ? 'section-pad section-alt' : 'section-pad';
+const btnClass = ctaVariant === 'ghost' ? 'btn-ghost' : 'btn-primary';
+
+const boxBg = boxVariant === 'navy' ? 'bg-navy border-navy' : 'bg-cream border-line';
+const boxTitleColor = boxVariant === 'navy' ? 'text-white' : 'text-ink';
+const boxItemColor = boxVariant === 'navy' ? 'text-white/85' : 'text-body';
+const checkColor = boxVariant === 'navy' ? 'text-gold-bright' : 'text-green-inst';
+const dividerColor = boxVariant === 'navy' ? 'border-white/15' : 'border-dashed border-line';
+---
+
+<section class={sectionClass} id={id}>
+  <div class="container-et">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <!-- Left: copy -->
+      <div>
+        <div class="kicker">{kicker}</div>
+        <h2 class="h-display text-[34px] md:text-[40px] mb-5">
+          {titleLine1} <span class="italic-serif">{titleLine2Italic}</span>
+        </h2>
+        <div class="flex flex-col gap-4">
+          {paragraphs.map((p) => (
+            <p class="text-[16px] text-body leading-relaxed" set:html={p} />
+          ))}
+        </div>
+        {ctaHref && ctaLabel && (
+          <a href={ctaHref} class={`${btnClass} mt-8 inline-flex`}>
+            {ctaLabel} <span class="arrow">→</span>
+          </a>
+        )}
+      </div>
+
+      <!-- Right: info box -->
+      <div class={`rounded-2xl border-2 p-8 ${boxBg}`}>
+        <h3 class={`text-[18px] font-bold mb-5 ${boxTitleColor}`}>{boxTitle}</h3>
+        <ul class="flex flex-col">
+          {boxItems.map((item, i) => (
+            <li class={`flex items-start gap-3 py-3 text-[14px] leading-snug ${boxItemColor} ${i < boxItems.length - 1 ? `border-b ${dividerColor}` : ''}`}>
+              <span class={`font-bold flex-shrink-0 mt-0.5 ${checkColor}`}>✓</span>
+              <span set:html={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
