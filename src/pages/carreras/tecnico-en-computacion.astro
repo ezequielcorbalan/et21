@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
+import SchemaBreadcrumb from '../../components/seo/SchemaBreadcrumb.astro';
 import Button from '../../components/ui/Button.astro';
 import SplitInfo from '../../components/blocks/SplitInfo.astro';
 import PlanDeEstudios from '../../components/blocks/PlanDeEstudios.astro';
@@ -48,9 +49,16 @@ const salidaStats = [
 ---
 
 <Layout
-  title="Técnico en Computación — ET Nº 21 Fragata Libertad"
+  title="Técnico en Computación CABA — ET Nº 21 Fragata Libertad"
   description="Carrera de Técnico en Computación de 6 años con título oficial. Programación, redes, bases de datos y robótica. Laboratorios modernos en Núñez 3638, CABA."
 >
+  <Fragment slot="schema">
+    <SchemaBreadcrumb items={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Carreras', href: '/carreras/tecnico-en-computacion' },
+      { label: 'Técnico en Computación', href: '/carreras/tecnico-en-computacion' },
+    ]} />
+  </Fragment>
   <PageHero
     breadcrumbs={[
       { label: 'Inicio', href: '/' },

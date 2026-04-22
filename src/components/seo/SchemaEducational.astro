@@ -1,9 +1,10 @@
 ---
 const schema = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "Escuela Técnica Nº 21 D.E. 10 Fragata Escuela Libertad",
-  "alternateName": "ET21",
+  "alternateName": ["ET21", "Escuela Técnica 21", "Fragata Libertad"],
+  "description": "Escuela técnica pública en CABA. Formamos Maestros Mayores de Obras y Técnicos en Computación desde 1952, con turno diurno y nocturno para adultos.",
   "url": "https://et21.com.ar",
   "logo": "https://et21.com.ar/logo.png",
   "image": "https://et21.com.ar/images/patio-palmeras.jpg",
@@ -13,15 +14,37 @@ const schema = {
     "streetAddress": "Núñez 3638",
     "addressLocality": "Ciudad Autónoma de Buenos Aires",
     "addressRegion": "CABA",
+    "postalCode": "C1430",
     "addressCountry": "AR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -34.5519, "longitude": -58.4611 },
+  "areaServed": {
+    "@type": "City",
+    "name": "Ciudad Autónoma de Buenos Aires"
   },
   "telephone": "+54-11-4543-7363",
   "email": "info@et21.com.ar",
+  "openingHours": "Mo-Fr 08:00-23:00",
   "parentOrganization": {
     "@type": "GovernmentOrganization",
     "name": "Ministerio de Educación de la Ciudad de Buenos Aires",
     "url": "https://www.buenosaires.gob.ar/educacion"
-  }
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Maestro Mayor de Obras",
+      "credentialCategory": "secondary school technical diploma",
+      "educationalLevel": "Secondary"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Técnico en Computación",
+      "credentialCategory": "secondary school technical diploma",
+      "educationalLevel": "Secondary"
+    }
+  ],
+  "sameAs": ["https://www.buenosaires.gob.ar/educacion"]
 };
 ---
 <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>

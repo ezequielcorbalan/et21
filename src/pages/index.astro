@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import HomeHero from '../components/blocks/HomeHero.astro';
 import BuildingStrip from '../components/blocks/BuildingStrip.astro';
+import SchemaLocalBusiness from '../components/seo/SchemaLocalBusiness.astro';
 import DualPath from '../components/blocks/DualPath.astro';
 import CarrerasGrid from '../components/blocks/CarrerasGrid.astro';
 import Heritage from '../components/blocks/Heritage.astro';
@@ -14,22 +15,23 @@ import FinalCTA from '../components/blocks/FinalCTA.astro';
 ---
 
 <Layout
-  title='Escuela Técnica Nº 21 "Fragata Libertad" — Núñez 3638, CABA'
-  description="Escuela técnica pública en CABA. Maestro Mayor de Obras y Técnico en Computación con título oficial. Turno diurno para ingresantes y nocturno para adultos. Inscripción 2026 abierta."
+  title="Escuela Técnica en CABA — ET Nº 21 Fragata Libertad | Núñez 3638"
+  description="Escuela técnica pública en CABA. Maestro Mayor de Obras y Técnico en Computación con título oficial. Turno diurno y nocturno. Inscripción 2026 en Núñez 3638."
 >
+  <Fragment slot="schema"><SchemaLocalBusiness /></Fragment>
 
   <!-- 1. Hero -->
   <HomeHero
     kicker="Escuela técnica pública · CABA"
-    titleLine1="Formamos técnicos con"
-    titleLine2Italic="oficio y criterio."
-    lede="Desde 1952 enseñamos <strong>Maestro Mayor de Obras</strong> y <strong>Técnico en Computación</strong> con título oficial. Turno diurno para ingresantes y <strong>nocturno para adultos</strong> que quieren terminar su secundario técnico."
+    titleLine1="Escuela técnica en CABA"
+    titleLine2Italic="con oficio y criterio."
+    lede='La Escuela Técnica Nº 21 "Fragata Libertad" es una escuela técnica pública de CABA. Desde 1952 formamos <strong>Maestros Mayores de Obras</strong> y <strong>Técnicos en Computación</strong> con título oficial, en nuestro edificio de Núñez 3638. Turno diurno para ingresantes y nocturno para adultos.'
     primaryCtaHref="/inscripcion-2026"
     primaryCtaLabel="Inscripción 2026"
     secondaryCtaHref="/institucional"
     secondaryCtaLabel="Conocé la escuela"
     heroImage="/images/patio-palmeras.jpg"
-    heroAlt="Patio interior del nuevo edificio de la ET21 con palmeras y fachada moderna"
+    heroAlt="Escuela Técnica Nº 21 en CABA — patio interior del nuevo edificio en Núñez 3638"
     badges={[
       { label: 'Fundada', value: '1952 — 74 años' },
       { label: 'Carreras', value: 'MMO · Computación' },
@@ -45,14 +47,14 @@ import FinalCTA from '../components/blocks/FinalCTA.astro';
       {
         href: '/institucional',
         image: '/images/fachada-calle.jpg',
-        alt: 'Fachada del nuevo edificio de la ET21 en Núñez 3638',
+        alt: 'Fachada de la Escuela Técnica 21 en Núñez 3638, CABA',
         chip: 'Nuevo edificio',
         caption: 'Núñez 3638 · Laboratorios y aulas modernas',
       },
       {
         href: '/institucional',
         image: '/images/fachada-historica.jpg',
-        alt: 'Fachada histórica del edificio original de 1952',
+        alt: 'Fachada histórica de la ET Nº 21, edificio original de 1952',
         chip: '74 años de historia',
         caption: 'Fachada del edificio original',
       },

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
+import SchemaBreadcrumb from '../components/seo/SchemaBreadcrumb.astro';
 import Section from '../components/ui/Section.astro';
 import RequirementsCards from '../components/blocks/RequirementsCards.astro';
 import Timeline from '../components/blocks/Timeline.astro';
@@ -82,9 +83,15 @@ const faqItems = [
 ---
 
 <Layout
-  title="Inscripción 2026 — Escuela Técnica Nº 21 Fragata Libertad"
-  description="Inscripción abierta para el ciclo lectivo 2026. Cronograma, requisitos y preguntas frecuentes para ingresantes al ciclo básico y adultos del turno nocturno."
+  title="Inscripción 2026 — Escuela Técnica Nº 21 CABA | Fragata Libertad"
+  description="Inscripción abierta para el ciclo lectivo 2026 en la escuela técnica CABA. Cronograma, requisitos y FAQ para ingresantes al ciclo básico y adultos del nocturno."
 >
+  <Fragment slot="schema">
+    <SchemaBreadcrumb items={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Inscripción 2026', href: '/inscripcion-2026' },
+    ]} />
+  </Fragment>
   <PageHero
     breadcrumbs={[{ label: 'Inicio', href: '/' }, { label: 'Inscripción 2026' }]}
     kicker="Ciclo lectivo 2026"

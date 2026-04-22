@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
+import SchemaBreadcrumb from '../../components/seo/SchemaBreadcrumb.astro';
 import Button from '../../components/ui/Button.astro';
 import SplitInfo from '../../components/blocks/SplitInfo.astro';
 import PlanDeEstudios from '../../components/blocks/PlanDeEstudios.astro';
@@ -27,6 +28,13 @@ const stats = [
   title="Maestro Mayor de Obras en CABA — ET Nº 21 Fragata Libertad"
   description="Carrera de Maestro Mayor de Obras de 6 años con título oficial habilitante. Dirigir obras, calcular estructuras, firmar planos municipales. Plan oficial del Ministerio de Educación CABA."
 >
+  <Fragment slot="schema">
+    <SchemaBreadcrumb items={[
+      { label: 'Inicio', href: '/' },
+      { label: 'Carreras', href: '/carreras/maestro-mayor-de-obras' },
+      { label: 'Maestro Mayor de Obras', href: '/carreras/maestro-mayor-de-obras' },
+    ]} />
+  </Fragment>
   <PageHero
     breadcrumbs={[
       { label: 'Inicio', href: '/' },

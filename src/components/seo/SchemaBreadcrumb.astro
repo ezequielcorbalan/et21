@@ -1,0 +1,17 @@
+---
+interface Crumb { label: string; href: string; }
+interface Props { items: Crumb[]; }
+const { items } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((c, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": c.label,
+    "item": `https://et21.com.ar${c.href}`
+  }))
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
