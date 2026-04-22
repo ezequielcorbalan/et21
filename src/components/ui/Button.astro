@@ -1,0 +1,23 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'ghost' | 'white' | 'outline' | 'gold';
+  arrow?: boolean;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const { href, variant = 'primary', arrow = false, class: className = '', type = 'button' } = Astro.props;
+const classes = `btn-${variant} ${className}`.trim();
+---
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+    {arrow && <span class="arrow transition-transform">→</span>}
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+    {arrow && <span class="arrow transition-transform">→</span>}
+  </button>
+)}

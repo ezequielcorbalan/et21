@@ -1,0 +1,8 @@
+---
+interface Props {
+  light?: boolean;
+  class?: string;
+}
+const { light = false, class: className = '' } = Astro.props;
+---
+<div class:list={['kicker', light && 'kicker-light', className]}><slot /></div>

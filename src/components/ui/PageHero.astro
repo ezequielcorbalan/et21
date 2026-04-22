@@ -1,0 +1,30 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import Kicker from './Kicker.astro';
+
+interface Crumb { label: string; href?: string; }
+
+interface Props {
+  breadcrumbs: Crumb[];
+  kicker: string;
+  title: string;
+  italicTitle?: string;
+  lede?: string;
+}
+
+const { breadcrumbs, kicker, title, italicTitle, lede } = Astro.props;
+---
+<section class="bg-navy text-white py-[90px] px-8 pb-[70px] relative overflow-hidden">
+  <div class="absolute -top-[200px] -right-[100px] w-[500px] h-[500px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(212,160,23,0.2) 0%, transparent 70%);"></div>
+  <div class="container-et relative">
+    <Breadcrumb items={breadcrumbs} />
+    <Kicker light>{kicker}</Kicker>
+    <h1 class="text-white text-[64px] font-extrabold leading-[1.02] tracking-[-2.5px] mb-5 max-w-[800px] max-md:text-5xl">
+      {title}
+      {italicTitle && <><br /><span class="italic-serif text-gold-bright tracking-[-1.8px]">{italicTitle}</span></>}
+    </h1>
+    {lede && <p class="text-white/80 text-[19px] max-w-[620px] leading-relaxed">{lede}</p>}
+    <div class="mt-7 flex gap-3 flex-wrap"><slot /></div>
+  </div>
+</section>
