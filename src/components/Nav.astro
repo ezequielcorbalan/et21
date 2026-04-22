@@ -1,0 +1,47 @@
+---
+const links = [
+  { href: '/institucional', label: 'Institucional' },
+  { href: '/carreras/maestro-mayor-de-obras', label: 'Carreras' },
+  { href: '/carreras/nocturno-adultos', label: 'Nocturno' },
+  { href: '/alumnos', label: 'Alumnos' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const pathname = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  const base = href.split('/').slice(0, 2).join('/');
+  return pathname.startsWith(base);
+}
+---
+<div class="bg-navy text-white py-2 px-6 text-xs flex justify-center gap-5">
+  📢 Inscripción 2026 abierta · <a href="/inscripcion-2026" class="text-gold-bright font-semibold no-underline">Ver fechas y requisitos →</a>
+</div>
+<nav class="sticky top-0 z-50 bg-[#FAF9F4]/95 backdrop-blur-md border-b border-line py-3.5 px-8 flex items-center gap-8">
+  <a href="/" class="flex items-center gap-3 text-ink no-underline">
+    <img src="/logo.png" alt="E.T. Nº 21 D.E. 10" class="w-12 h-12 object-contain flex-shrink-0" />
+    <div class="font-extrabold text-[15px] tracking-[-0.3px] leading-tight">
+      E.T. Nº 21 D.E. 10
+      <small class="block font-medium text-[10px] text-muted uppercase mt-0.5 tracking-[1.2px]">Fragata Escuela Libertad</small>
+    </div>
+  </a>
+  <ul class="list-none flex gap-6 ml-auto items-center max-md:hidden">
+    {links.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class:list={[
+            'no-underline font-medium text-sm transition-colors',
+            isActive(link.href) ? 'text-gold' : 'text-ink hover:text-gold',
+          ]}
+        >{link.label}</a>
+      </li>
+    ))}
+    <li>
+      <a href="/inscripcion-2026" class="px-[18px] py-2.5 bg-navy text-white font-bold text-[13px] rounded-lg border-[1.5px] border-navy hover:bg-gold-bright hover:border-gold-bright hover:text-navy transition-all no-underline">
+        Inscripción 2026 →
+      </a>
+    </li>
+  </ul>
+</nav>
