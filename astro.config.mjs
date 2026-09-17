@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
-  site: 'https://et21.com.ar',
+  site: 'https://et21.ar',
 
   integrations: [
     tailwind({ applyBaseStyles: false }),

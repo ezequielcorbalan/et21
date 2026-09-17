@@ -24,7 +24,7 @@ const { title, description, category, pubDate, heroImage, heroAlt, readingMinute
 
 const related = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
 const pubStr = pubDate.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
-const canonical = `https://et21.com.ar/blog/${post.slug}/`;
+const canonical = `https://et21.ar/blog/${post.slug}/`;
 ---
 <Layout
   title={`${title} — Blog ET21`}
@@ -36,7 +36,7 @@ const canonical = `https://et21.com.ar/blog/${post.slug}/`;
     <SchemaBlogPosting
       headline={title}
       description={description}
-      image={`https://et21.com.ar${heroImage}`}
+      image={`https://et21.ar${heroImage}`}
       datePublished={pubDate}
       author={author}
       url={canonical}
